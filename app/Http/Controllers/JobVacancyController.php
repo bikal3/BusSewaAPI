@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Quotation;
+use App\Model\JobVacancy;
+use Illuminate\Http\Request;
 use DB;
 
-use App\Model\News;
-use App\Http\Resources\News\NewsResource;
-use App\Http\Requests\NewsRequest;
-use Illuminate\Http\Request;
-
-class NewsController extends Controller
+class JobVacancyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +15,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-       return response([
-        'newslist'=>DB::table('news')->get()
-    ]);
+        //
+        return response([
+            'jobvacancies'=>DB::table('job_vacancy')->get()
+        ]);
     }
 
     /**
@@ -32,7 +28,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-    
+        //
     }
 
     /**
@@ -41,32 +37,23 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NewsRequest $request)
+    public function store(Request $request)
     {
         //
-        $news= new News;
-        DB::insert('insert into news (id, title) values (?, ?)', [
-            $news->id=$request->id,
-            $news->title= $request->title
-        ]);
-        DB::commit();
-        // return $request ->all();
-        return response([
-            'data'=>new NewsResource($news)
-        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\News  $news
+     * @param  \App\Model\JobVacancy  $jobVacancy
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // return News::find($id);
+        //
+   
         return response([
-            'newsDetails'=> News::find($id)
+            'jobvacancy'=> JobVacancy::find($id)
         ]);
 
     }
@@ -74,10 +61,10 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\News  $news
+     * @param  \App\Model\JobVacancy  $jobVacancy
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(JobVacancy $jobVacancy)
     {
         //
     }
@@ -86,10 +73,10 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\News  $news
+     * @param  \App\Model\JobVacancy  $jobVacancy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, JobVacancy $jobVacancy)
     {
         //
     }
@@ -97,10 +84,10 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\News  $news
+     * @param  \App\Model\JobVacancy  $jobVacancy
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy(JobVacancy $jobVacancy)
     {
         //
     }
